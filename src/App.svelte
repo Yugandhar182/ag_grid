@@ -8,12 +8,7 @@
 	  { field: 'make' },
 	  { field: 'model' },
 	  { field: 'price' },
-	  {
-		headerName: 'Actions',
-		cellRenderer: function(params) {
-		  return `<button onclick="editRow(${params.rowIndex})">Edit</button>`;
-		}
-	  }
+	  
 	];
   
 	const rowData = [
@@ -26,11 +21,6 @@
 	{ make: 'Porsche', model: 'Boxter', price: 72000 }
 	];
   
-	function editRow(rowIndex) {
-	  const selectedRowData = agGrid.gridOptions.api.getDisplayedRowAtIndex(rowIndex).data;
-	  // Display the popup with the selected row data
-	  window.alert(JSON.stringify(selectedRowData, null, 2));
-	}
   
 	onMount(() => {
 	  import('ag-grid-community').then((module) => {
@@ -44,7 +34,14 @@
 			resizable: true,
 			flex: 1,
 			minWidth: 100,
-		  },
+			editable: true,
+		 
+			floatingFilter: true,
+			pagination: true,
+			paginationPageSize: 3,
+	},
+		  
+	   
 		};
 		new agGrid.Grid(gridContainer, gridOptions);
 	  });
