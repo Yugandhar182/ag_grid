@@ -123,7 +123,7 @@
 
           // Make a PUT request to update the data on the API
           fetch(`https://api.recruitly.io/api/candidate?apiKey=TEST1236C4CF23E6921C41429A6E1D546AC9535E`, {
-            method: isNewCandidate ? 'POST' : 'PUT',
+            method:'POST',
             headers: {
               'Content-Type': 'application/json'
             },
